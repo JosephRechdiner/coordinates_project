@@ -1,11 +1,11 @@
 import requests
 import os
 
-API_URL = "http://ip-api.com/json"
+EXTERNAL_URL = "http://ip-api.com/json"
         
 def get_coordinates_api(ip):
     try:
-        response = requests.get(API_URL, params=ip)
+        response = requests.get(EXTERNAL_URL, params=ip)
         if not response.status_code == 200:
             return False
         data = response.json()
