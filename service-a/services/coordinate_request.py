@@ -3,7 +3,7 @@ import os
 
 EXTERNAL_URL = "http://ip-api.com/json"
         
-def get_coordinates_api(ip):
+def get_coordinates_from_api(ip):
     try:
         response = requests.get(EXTERNAL_URL, params=ip)
         if not response.status_code == 200:
