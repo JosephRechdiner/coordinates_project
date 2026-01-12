@@ -5,5 +5,9 @@ from services.ip_service import IpManager
 ip_router = APIRouter()
 
 @ip_router.post("/ip")
-def get_coordinate_by_ip(ip: Ip):
-    return IpManager.get_coordinate(ip)
+def post_coordinate(ip: Ip):
+    return IpManager.add_coordinate(ip)
+
+@ip_router.get("/ip")
+def get_all_coordinates():
+    return IpManager.get_all_coordinates()
