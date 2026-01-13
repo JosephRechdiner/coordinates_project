@@ -1,5 +1,6 @@
 import requests
 import os
+from fastapi import HTTPException
 
 EXTERNAL_URL = os.getenv("EXTERNAL_URL")
         
@@ -17,3 +18,4 @@ def get_coordinates_from_api(ip):
         }
     except Exception as e:
         print(f"Error getting the coordinates {e}")
+        raise HTTPException(status_code=404, detail=str(e))

@@ -23,6 +23,7 @@ class IpManager:
             return response.json()
         except Exception as e:
             print(f"Error: {e}")
+            raise HTTPException(status_code=404, detail=str(e))
     
     def get_all_coordinates(self):
         try:
@@ -32,6 +33,7 @@ class IpManager:
             return response.json()
         except Exception as e:
             print(f"Error: {e}")
+            raise HTTPException(status_code=404, detail=str(e))
 
 def get_ip_manager():
     ip_manager = IpManager()
