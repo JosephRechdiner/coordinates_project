@@ -5,7 +5,8 @@ EXTERNAL_URL = os.getenv("EXTERNAL_URL")
         
 def get_coordinates_from_api(ip):
     try:
-        response = requests.get(EXTERNAL_URL, params=ip)
+        full_path = f"{EXTERNAL_URL}/{ip}"
+        response = requests.get(full_path)
         if not response.status_code == 200:
             return False
         data = response.json()

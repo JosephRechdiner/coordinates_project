@@ -20,7 +20,7 @@ class IpManager:
             response = self.session.post(INTERNAL_URL, json=coordinates)
             if not response.status_code == 200:
                 raise HTTPException(status_code=response.status_code, detail="No server found for inserting data!")
-            return coordinates
+            return response.json()
         except Exception as e:
             print(f"Error: {e}")
     
