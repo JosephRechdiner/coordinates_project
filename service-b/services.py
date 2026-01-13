@@ -4,13 +4,10 @@ from fastapi import HTTPException, status
 
 def get_coordinates(conn: Redis) -> dict:
     try:
+        data = {}
         keys = conn.keys("coord:*")
         if not keys:
-            raise HTTPException(
-                status_code=status.HTTP_404_NOT_FOUND,
-                detail="There are no coordinates in data"
-            )
-        data = {}
+            return {}
         for key in keys:
             data[key] = conn.hgetall(key)
 
