@@ -21,6 +21,6 @@ spec:
         - containerPort: 8000
         env:
         - name: INTERNAL_URL
-          value: "___________"
+          value: "http://internal-api-service:8080/coordinates"
         - name: EXTERNAL_URL
           value: "http://ip-api.com/json"
