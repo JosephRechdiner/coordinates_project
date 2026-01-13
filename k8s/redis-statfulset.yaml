@@ -3,7 +3,7 @@ kind: StatefulSet
 metadata:
   name: redis
 spec:
-  serviceName: "redis-headless"
+  serviceName: redis-headless
   replicas: 2
   selector:
     matchLabels:
@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: redis
-        image: redislabs/redis
+        image: redis:7-alpine
         ports:
         - containerPort: 6379
         volumeMounts:
