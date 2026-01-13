@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-a-deployment
+  labels:
+    app: external-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: external-api
+  template:
+    metadata:
+      labels:
+        app: external-api
+    spec:
+      containers:
+      - name: external-api
+        image: josephrechdiner/coordinates_external_api:v1
+        ports:
+        - containerPort: 8000
+        env:
+        - name: INTERNAL_URL
+          value: "http://internal-api-service:8080/coordinates"
+        - name: EXTERNAL_URL
+          value: "http://ip-api.com/json"

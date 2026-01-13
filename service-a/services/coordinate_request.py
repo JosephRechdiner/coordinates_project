@@ -1,7 +1,7 @@
 import requests
 import os
 
-EXTERNAL_URL = "http://ip-api.com/json"
+EXTERNAL_URL = os.getenv("EXTERNAL_URL")
         
 def get_coordinates_from_api(ip):
     try:
