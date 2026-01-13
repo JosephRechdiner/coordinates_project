@@ -6,8 +6,11 @@ import os
 INTERNAL_URL = os.getenv("INTERNAL_URL")
 
 class IpManager:
+    session = None
     def __init__(self):
-        self.session = Session()
+        if not IpManager.session: 
+            IpManager.session = Session()
+        self.session = IpManager.session
         
     def add_coordinate(self, ip):
         try:
