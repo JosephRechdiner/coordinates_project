@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: internal-api
-        image: naftali96/coordinates_internal_api:v5
+        image: naftali96/coordinates_internal_api:v6
         ports:
         - containerPort: 8080
         env:
