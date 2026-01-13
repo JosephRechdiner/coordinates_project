@@ -7,15 +7,13 @@ class RedisManager:
     @classmethod
     def get_connection(cls):
         if cls._connection is None:
-            host = os.getenv('REDIS_HOST', 'localhost')
-            port = int(os.getenv('REDIS_PORT', 6379))
-            password = os.getenv('REDIS_PASSWORD', None)
+            host = os.getenv('REDIS_HOST')
+            port = int(os.getenv('REDIS_PORT'))
 
             try:
                 pool = redis.ConnectionPool(
                     host=host, 
                     port=port, 
-                    password=password,
                     decode_responses=True,
                     socket_timeout=5 
                 )
