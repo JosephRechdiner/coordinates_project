@@ -1,4 +1,5 @@
-from pydantic import BaseModel, IPvAnyAddress
+from pydantic import BaseModel
+from ipaddress import IPv4Address
 
 class Ip(BaseModel):
-    ip: IPvAnyAddress
+    ip: IPv4Address

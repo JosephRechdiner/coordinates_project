@@ -8,7 +8,7 @@ def get_coordinates(conn: Redis) -> dict:
         if not keys:
             raise HTTPException(
                 status_code=status.HTTP_404_NOT_FOUND,
-                detail="There are no coordinates in data.",
+                detail="There are no coordinates in data"
             )
         data = {}
         for key in keys:
@@ -20,7 +20,7 @@ def get_coordinates(conn: Redis) -> dict:
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Error retrieving data: {str(e)}",
+            detail=f"Error retrieving data: {str(e)}"
         )
 
 
@@ -31,7 +31,7 @@ def get_coordinate(ip: str, conn: Redis) -> dict:
         if not data:
             raise HTTPException(status_code=404, detail="IP address not found")
         return {"data": data}
-    except Exception as e:
+    except Exception:
         raise HTTPException(status_code=500, detail="Database error")
 
 
@@ -40,11 +40,11 @@ def create_coordinate(coordinate: dict, conn: Redis):
     try:
         conn.hset(key, mapping={"lat": coordinate["lat"], "lon": coordinate["lon"]})
         return {
-            "coordinate": coordinate,
-            "message": "The coordinates were saved successfully.",
+            "message": "The coordinates were saved successfully",
+            "coordinate": coordinate
         }
     except Exception as e:
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail="Saving to the database failed.",
-        )
+            detail="Saving to the database failed"
+        )   
