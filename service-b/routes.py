@@ -8,12 +8,20 @@ router = APIRouter()
 
 @router.get("/coordinates")
 async def get_all_coordinates(conn = Depends(RedisManager.get_connection)):
-    return services.get_coordinates(conn)
-
+    try:
+        return services.get_coordinates(conn)
+    except Exception as e:
+        raise e
+        
 @router.get("/coordinates/{ip}")
 async def get_coordinate_by_ip(ip: str, conn = Depends(RedisManager.get_connection)):
-    return services.get_coordinate(ip, conn)
-
+    try:
+        return services.get_coordinate(ip, conn)
+    except Exception as e:
+        raise e
 @router.post("/coordinates")
 async def add_coordinate(coordinate: Coordinate, conn = Depends(RedisManager.get_connection)):
-    return services.create_coordinate(coordinate.model_dump(), conn) 
+    try:
+        return services.create_coordinate(coordinate.model_dump(), conn) 
+    except Exception as e:
+        raise e
