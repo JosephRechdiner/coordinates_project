@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-b-deployment
+  labels:
+    app: internal-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: internal-api
+  template:
+    metadata:
+      labels:
+        app: internal-api
+    spec:
+      containers:
+      - name: internal-api
+        image: josephrechdiner/coordinates_internal_api:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: REDIS_HOST
+          value: "___________"
+        - name: REDIS_PORT
+          value: "___________"
