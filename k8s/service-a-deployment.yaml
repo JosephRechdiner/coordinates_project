@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: external-api
-        image: josephrechdiner/coordinates_external_api:v7
+        image: josephrechdiner/coordinates_external_api:v11
         ports:
         - containerPort: 8000
         env:
